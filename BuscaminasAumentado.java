@@ -12,6 +12,8 @@ public class BuscaminasAumentado {
 		int filas=5;
 		int contador=0;
 		String matriz[][]=new String[filas][filas];
+		//Llamo al procedimiento menu donde tengo las instrucciones del juego
+		menu();
 		//Hago un bucle que se repita hasta que la matriz tenga 4 bombas.
 		do{
 			//Llamo a la matriz que está rellena
@@ -21,15 +23,14 @@ public class BuscaminasAumentado {
 			//Llamo a un procedimiento que iguale la matriz rellena a la matriz creada en el main
 			igualarMatriz(matriz, matrizRellena);
 			}while(contador!=4);
-		
 		//Hago un bucle que se repita hasta que me introduzca una pocscion con una bomba
 		do{
-		//Pido al usuario que me introduzca un numero de fila
-		System.out.println("Introduce la fila 0-4");
-		nFila=sc.nextInt();
-		//Hago lo mismo con las columnas
+		//Pido al usuario que me introduzca un numero de columna
 		System.out.println("Introduce la columna 0-4");
 		nCol=sc.nextInt();
+		//Hago lo mismo con las filas
+		System.out.println("Introduce la fila 0-4");
+		nFila=sc.nextInt();
 		//Llamo a la funcion numeroBombas para contar las bombas de alrededor de la posicion 
 		int nBombas=numeroBombasAlredeor(nFila, nCol, matriz);
 		//Muestro en pantalla el numero de bombas alrededor
@@ -62,7 +63,7 @@ public class BuscaminasAumentado {
 		int cont=0;
 		for(int i=0;i<matriz.length;i++) {
 			for(int j=0;j<matriz[i].length;j++) {
-				if(matriz[i][j]=="*") {
+				if(matriz[i][j].equals("*")) {
 					cont++;
 				}
 			}
@@ -104,6 +105,8 @@ public class BuscaminasAumentado {
 		return cont;
 	
 	}
+	
+	//Hago un procedimiento que muestre la matriz
 	public static void mostrarMatriz(String [][]matriz){
 		for(int i=0;i<matriz.length;i++) {
 			for(int j=0;j<matriz[i].length;j++) {
@@ -111,5 +114,13 @@ public class BuscaminasAumentado {
 			}
 			System.out.println();
 		}
+	}
+	
+	//Hago un procedimiento que muestre el menu del juego
+	public static void menu () {
+		System.out.println("++++++Reglas del juego++++++");
+		System.out.println("Introduce la posicion en la que");
+		System.out.println("está la bomba '*' hasta acertar");
+		System.out.println("+++++++++++++++++++++++++++++");
 	}
 }
